@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<include file="Public/public_head" title="" keywords="{$Think.config.WEB_KEYWORDS}" description="{$Think.config.WEB_DESCRIPTION}"/></head>
+<body>
+<include file="Public/public_nav"/>
+<div class="b-h-70"></div>
+<div id="b-content" class="container">
+
+<div class="panel panel-default">
+    <div class="panel-body">
+       <!-- 顶部 -->
+	<div id="Header">
+    	<div class="Header">
+            <h1 class="Logo"><a href="/"><img src="images/sysindex/logo.gif" alt="Aschool网上校园 班级博客系统" /></a></h1>
+            <div class="Search">
+                    <form action="/main.aspx" method="get" onsubmit="go_croom();return false;">
+                        <input name="croomid" id="search_keywords" type="text" value="输入班号, 快速进入班级" onfocus="if (value == '输入班号, 快速进入班级') {value =''};" onblur="if (value == '') {value ='输入班号, 快速进入班级'};" />
+                        
+                        <button type='submit' id='search_submit'><span>进入班级</span></button>
+                    </form>
+                    <script>var formkeyword = ""; var search_keywords = document.getElementById("search_keywords"); if (search_keywords.value == "输入班号, 快速进入班级" && formkeyword != "") search_keywords.value = "";</script>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <!-- Banner -->
+    <div id="Banner">
+        <div class="Banner">
+        	<div class="bannerTitle">为班级申请班级博客</div>
+        </div>
+    </div>
+    <!-- 主体 -->
+    <div id="Pagebody">
+    	<div class="ApplyCont">
+            <div class="Register">
+                <form action="" method="post" name="ovform">
+                    <div id="ob_reg">
+                        <div class="reg_title_c">请填写班级博客资料</div>
+                        <div class="reg_content">
+                            <ul>
+                                <li class="r_left"><label for="c_name">班级名称：</label></li>
+                                <li class="r_right"><input type="text" onblur="on_output(this);" onfocus="on_input(this);" maxlength="100" size="22" id="c_name" name="c_name"/></li>					
+                                <li class="r_msg"><div class="d_default" id="d_c_name" osval="填写班级名称，例:北京一中三年级二班"></div></li>
+                            </ul>
+                           <!--<ul>
+                            <li class="r_left">
+                                <label for="uname">班级管理员帐号：</label>
+                            </li>
+                            <li class="r_right">
+                                <input type="text" onblur="on_output(this);" onfocus="on_input(this);" maxlength="30" size="20" id="username" name="username"/>
+                                <input type="hidden" id="chkuname" value="false" />
+                            </li>					
+                            <li class="r_msg">
+                                <div class="d_default" id="d_username" osval="输入4-14位字符，英文、数字的组合。"></div>
+                            </li>
+                         </ul>-->
+
+                            <ul>
+                                <li class="r_left"><label for="tel">手机号码：</label></li>
+                                <li class="r_right"><input type="text" onblur="on_output(this);" onfocus="on_input(this);" maxlength="32" size="20" id="tel" name="tel" /></li>
+                                <li class="r_msg"><div class="d_default" id='d_tel' osval="请输入手机号码，这是您的登陆账号"></div></li>
+                            </ul>
+                            <ul>
+                                <li class="r_left"><label for="tel">短信验证码：</label></li>
+                                <li class="r_right"> <input type="text" onblur="on_output(this);" onfocus="on_input(this);" maxlength="32" size="20" id="smscode" name="smscode" /></li>
+                                <li class="r_msg"><div class="d_default" id='d_icode4new' osval="请输入验证码"></div></li>
+                            </ul>
+                            <ul>
+                                <li class="r_left"></li>
+                                <li class="r_right"><input type="button" id="getcode_btn" onclick="getregcode(); return false;" value="获取短信验证码" /></li>
+                                <li class="r_msg"></li>
+                            </ul>
+                            
+
+                                <ul>
+
+                                    <li class="r_left">
+                                        <label for="upwd">管理员密码：</label>
+                                    </li>
+                                    <li class="r_right">
+                                        <input type="password" onblur="on_output(this);" onfocus="on_input(this);" maxlength="12" size="20" id="password" name="password" />
+                                    </li>
+                                    <li class="r_msg">
+                                        <div class="d_default" id="d_password" osval="输入6位以上字符，不允许空格。"></div>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li class="r_left">
+                                        <label for="repassword">
+                                            登录密码确认：
+                                        </label>
+                                    </li>
+                                    <li class="r_right">
+                                        <input type="password" onblur="on_output(this);" onfocus="on_input(this);" maxlength="20" size="20" id="repassword" name="repassword" />
+                                    </li>
+                                    <li class="r_msg">
+                                        <div class="d_default" id="d_repassword" osval="重复输入上面的密码。"></div>
+                                    </li>
+                                </ul>
+
+
+
+                                <ul>
+                                    <li class="r_left">
+                                        <label for="nickname">管理员显示昵称：</label>
+                                    </li>
+                                    <li class="r_right">
+                                        <input type="text" onblur="on_output(this);" onfocus="on_input(this);" maxlength="32" size="20" id="nickname" name="nickname" />
+                                    </li>
+                                    <li class="r_msg"><div class="d_default" id='d_nickname' osval="显示昵称或真实姓名,不作为登陆使用"></div></li>
+                                </ul>
+                                <!--<ul>
+            <li class="r_left"><label for="tel">联系电话：</label></li>
+            <li class="r_right"><input type="text" onblur="on_output(this);" onfocus="on_input(this);" maxlength="32" size="20" id="tel" name="tel"/></li>
+            <li class="r_msg"><div class="d_default" id='d_tel' osval="请输入电话号码，以便客服人员联系您"></div></li>
+        </ul>-->
+                                <ul style="display:none">
+                                    <li class="r_left"><label for="QQ">QQ号码：</label></li>
+                                    <li class="r_right"><input type="text" onblur="on_output(this);" onfocus="on_input(this);" maxlength="32" size="20" id="qq" name="qq" /></li>
+                                    <li class="r_msg"><div class="d_default" id='d_qq' osval="请输入QQ号码，以便客服人员联系您"></div></li>
+                                </ul>
+                                <!--<ul>
+            <li class="r_left"><label for="tel">验证码：<img title="如果看不清数字或字母?请点一下换一个!" style="border: 1px solid rgb(204, 204, 204); border-image: none; vertical-align: top;" onclick='this.src="/code.aspx?s=4new&t="+ Math.random();' alt="如果看不清数字或字母?请点一下换一个!" src="/code.aspx?s=4new"></label></li>
+            <li class="r_right"> <input type="text" onblur="on_output(this);" onfocus="on_input(this);" maxlength="32" size="20" id="code4new" name="code4new"/></li>
+            <li class="r_msg"><div class="d_default" id='d_icode4new' osval="请输入验证码"></div></li>
+        </ul>-->
+                                <div class="clear"></div>
+                           </div>
+                        <div class="reg_bottom"><input type="hidden" id="fromcid" value="" /><input type="button" id="regbotton" onclick="chk_reg();" value="OK! 提交注册资料" name="submit"/><span id="save_stat"></span></div>
+                    </div>
+                </form>
+                
+                
+            </div>
+        </div>
+    </div>
+       
+	
+
+    </div>
+</div>
+
+	<div class="row">
+		<include file="Public/public_foot"/>
+	</div>
+</div>
+
+</body></html>
+<script>
+    document.getElementById("fromcid").value = gets("fromcid");
+    function on_input(obj) {
+        if (!obj) return;
+        obj.className = 'input_onFocus'
+        document.getElementById("d_" + obj.name).className = "d_on";
+        var msgobj = document.getElementById("d_" + obj.name);
+
+        msgobj.innerHTML = msgobj.getAttribute('osval');
+    }
+
+    function on_output(obj) {
+        if (!obj) return;
+        obj.className = 'input_onBlur';
+
+        var msgobj = document.getElementById("d_" + obj.name);
+
+        var chk = true;
+        var str = obj.value;
+        switch (obj.name) {
+            case "c_name":
+
+                if (str == '' || str.length < 2) { chk = false; }
+                if (chk) {
+                    msgobj.className = "d_ok";
+                    msgobj.innerHTML = "班级名称已经输入。";
+                }
+                else {
+                    msgobj.className = "d_err";
+                    msgobj.innerHTML = msgobj.getAttribute('osval');
+                }
+                break;
+            case "username":
+                if (str == '' || str.length < 2) { chk = false; }
+                if (chk) {
+                    msgobj.className = "d_ok";
+                    msgobj.innerHTML = '登录ID已经输入。';
+                } else {
+                    msgobj.className = "d_err";
+                    msgobj.innerHTML = msgobj.getAttribute('osval');
+                }
+                break;
+            case "nickname":
+                if (str == '' || str.length < 2) { chk = false; }
+                if (chk) {
+                    msgobj.className = "d_ok";
+                    msgobj.innerHTML = '昵称已经输入。';
+                } else {
+                    msgobj.className = "d_err";
+                    msgobj.innerHTML = msgobj.getAttribute('osval');
+                }
+                break;
+            case "tel":
+                if (str == '' || str.length < 8) { chk = false; }
+                if (chk) {
+                    msgobj.className = "d_ok";
+                    msgobj.innerHTML = '联系电话已经输入。';
+                } else {
+                    msgobj.className = "d_err";
+                    msgobj.innerHTML = msgobj.getAttribute('osval');
+                }
+                break;
+            case "password":
+                if (str == '' || str.length < 6 || str.length > 20) { chk = false; }
+                if (chk) {
+                    msgobj.className = "d_ok";
+                    msgobj.innerHTML = '密码已经输入。';
+                } else {
+                    msgobj.className = "d_err";
+                    msgobj.innerHTML = msgobj.getAttribute('osval');
+                }
+                break;
+            case "repassword":
+                if (str != document.getElementById("password").value || str == '') { chk = false; }
+                if (chk) {
+                    msgobj.className = "d_ok";
+                    msgobj.innerHTML = '重复密码输入正确。';
+                } else {
+                    msgobj.className = "d_err";
+                    msgobj.innerHTML = msgobj.getAttribute('osval');
+                }
+                break;
+            case "qq":
+                if (str == '' || str.length < 4) { chk = false; }
+                if (chk) {
+                    msgobj.className = "d_ok";
+                    msgobj.innerHTML = '联系QQ号码已经输入。';
+                } else {
+                    msgobj.className = "d_err";
+                    if (!on_output($('tel'))) {
+                        msgobj.innerHTML = "联系电话或QQ必须输入一项！";
+                    }
+                    else {
+                        msgobj.innerHTML = msgobj.getAttribute('osval');
+                    }
+                }
+                break;
+        }
+        return chk;
+    }
+
+    var smstime;
+    var timer;
+    function getregcode() {
+        var ap = new apost();
+        ap.add("tel");
+        ap.send("/ajax.aspx?action=getregcode", "");
+        document.getElementById('getcode_btn').disabled = true;
+
+        //setInterval(setbtntime, 1000);
+        smstime = 60;
+        timer = window.setInterval(setbtntime, 1000)
+    }
+
+
+    function setbtntime() {
+
+        if (smstime == 0) {
+            document.getElementById('getcode_btn').disabled = false;
+            document.getElementById('getcode_btn').value = "获取短信验证码";
+            window.clearInterval(timer)
+            return;
+        }
+        smstime = smstime - 1;
+        document.getElementById('getcode_btn').value = "获取短信验证码(" + smstime + ")";
+    }
+
+    function chk_reg() {
+        var chk = true
+        //if (!on_output($('username'))) { chk = false }
+        if (!on_output($('password'))) { chk = false }
+        if (!on_output($('repassword'))) { chk = false }
+        if (!on_output($('nickname'))) { chk = false }
+        if (!on_output($('tel'))) { chk = false }
+        if (!on_output($('c_name'))) { chk = false }
+        //if (!on_output($('usergroup'))) { chk = false }
+        if (chk) {
+            $('save_stat').innerHTML = '<img src="images/loading.gif" align="absmiddle" />数据提交中,请稍候……'
+            $('regbotton').disabled = 'disabled';
+            var ap = new apost();
+            ap.add("c_name");
+            ap.add("username");
+            ap.add("tel");
+            ap.add("password");
+            ap.add("nickname");
+            ap.add("fromcid");
+            ap.add("code4new");
+            ap.add("smscode");
+            ap.send("/ajax.aspx?action=applyclass", "");
+        } else {
+            //reset_code();
+        }
+    }
+
+    function reset_reg() {
+        $('save_stat').innerHTML = '';
+        $('regbotton').disabled = '';
+    }
+
+
+
+    function show_returnsave(arrobj) {
+        if (arrobj) {
+
+            var oDialog = new dialog("");
+            oDialog.init();
+            oDialog.set('src', arrobj[1]);
+            oDialog.event(arrobj[0], '');
+            oDialog.button('dialogOk', arrobj[2]);
+            $('save_stat').innerHTML = '';
+            document.getElementById('regbotton').disabled = '';
+        }
+    }
+
+
+
+    function sl(st) {
+        sl1 = st.length;
+        strLen = 0;
+        for (i = 0; i < sl1; i++) {
+            if (st.charCodeAt(i) > 255) strLen += 2;
+            else strLen++;
+        }
+        return strLen;
+    }
+
+    function checkerr(string) {
+        var i = 0;
+        for (i = 0; i < string.length; i++) {
+            if ((string.charAt(i) < '0' || string.charAt(i) > '9') && (string.charAt(i) < 'a' || string.charAt(i) > 'z') && (string.charAt(i) != '-')) {
+                return 1;
+            }
+        }
+        return 0; //pass
+    }
+
+
+    
+  </script>

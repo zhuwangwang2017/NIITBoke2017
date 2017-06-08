@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>添加用户</title>
+<bootstrapcss/>
+<icheckcss/>
+
+</head>
+<body>
+<form class="form-group" action="{:U('Admin/User/edit')}" method="post">
+<input type="hidden" name="id" value="{$data['id']}">
+<table class="table table-bordered table-striped table-hover table-condensed">
+ 
+<tr><th>用户名</th>
+    <td> <input class="form-control modal-sm" type="text" name="nickname" value="{$data['nickname']}"></td></tr>
+<tr><th>密码</th>
+    <td> <input class="form-control modal-sm" type="text" name="user_pass" value="{$data['user_pass']}"></td></tr>
+<tr><th>Email</th>
+    <td> <input class="form-control modal-sm" type="text" name="email" value="{$data['email']}"></td></tr>
+ 
+  
+ <tr><th>是否管理员</th>
+     <td> <span class="inputword">是</span> <input id="test" class="icheck" type="radio" name="is_admin" value="1" <if condition="$data['is_admin'] eq 1">checked='checked'</if>> &emsp; 
+          <span class="inputword">否</span> <input class="icheck" type="radio" name="is_admin" value="0"  <if condition="$data['is_admin'] eq 0">checked='checked'</if>></td></tr>
+ <tr><th></th>
+      <td> <input class="btn btn-success" type="submit" value="修改"></td></tr>
+ </table>
+ </form>
+ <bootstrapjs/>
+ <icheckjs/>
+ 
+ </body>
+ </html>

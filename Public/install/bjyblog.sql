@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : xamp
+Source Server         : local
 Source Server Version : 50547
 Source Host           : localhost:3306
-Source Database       : bjy
+Source Database       : boke
 
 Target Server Type    : MYSQL
 Target Server Version : 50547
 File Encoding         : 65001
 
-Date: 2017-05-22 08:16:04
+Date: 2017-06-04 23:00:14
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -34,15 +34,14 @@ CREATE TABLE `bjy_article` (
   `addtime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '添加时间',
   `cid` tinyint(2) unsigned NOT NULL DEFAULT '0' COMMENT '分类id',
   PRIMARY KEY (`aid`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of bjy_article
 -- ----------------------------
-INSERT INTO `bjy_article` VALUES ('17', '测试文章标题', '谁啊', '&lt;p&gt;测试文章内容&lt;/p&gt;', '关键词,多个', '测试文章描述', '1', '0', '1', '1', '377', '1432649909', '28');
-INSERT INTO `bjy_article` VALUES ('18', '第一个php技术', '你好', '&lt;p&gt;文章要这么样才能写好，我怎么会直达呢&lt;/p&gt;', '', '文章要这么样才能写好', '1', '0', '1', '1', '1', '1494287756', '29');
-INSERT INTO `bjy_article` VALUES ('19', '不知道上传什么东西', '上传人', '&lt;p&gt;&lt;span style=&quot;color: rgb(79, 129, 189);&quot;&gt;&lt;strong&gt;范德萨范德萨范德萨范德萨werewolf热污染奋斗史&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(79, 129, 189);&quot;&gt;&lt;strong&gt;&lt;br/&gt;&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;/bjy2/Upload/image/ueditor/20170510/1494373976101331.jpg&quot; title=&quot;白俊遥博客&quot; alt=&quot;白俊遥博客&quot;/&gt;&lt;span style=&quot;color: rgb(79, 129, 189);&quot;&gt;&lt;strong&gt;&lt;br/&gt;&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(79, 129, 189);&quot;&gt;&lt;strong&gt;&lt;br/&gt;&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(79, 129, 189);&quot;&gt;&lt;strong&gt;发大水发生的&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(79, 129, 189);&quot;&gt;&lt;strong&gt;fdsa&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(79, 129, 189);&quot;&gt;&lt;/span&gt;&lt;img src=&quot;/bjy2/Upload/image/ueditor/20170510/1494374017115505.jpg&quot; title=&quot;白俊遥博客&quot; alt=&quot;白俊遥博客&quot;/&gt;&lt;/p&gt;', '上传人', '范德萨范德萨范德萨范德萨werewolf热污染奋斗史发大水发生的fdsa', '1', '0', '0', '0', '1', '1494374043', '29');
-INSERT INTO `bjy_article` VALUES ('20', '天天发小说', '默认作者', '&lt;p&gt;&lt;img width=&quot;809&quot; height=&quot;382&quot; src=&quot;http://api.map.baidu.com/staticimage?center=119.022429,33.616272&amp;zoom=13&amp;width=530&amp;height=340&amp;markers=119.022429,33.616272&quot; style=&quot;width: 809px; height: 382px;&quot;/&gt;&lt;/p&gt;', '', '', '1', '0', '1', '1', '1', '1494404731', '28');
+INSERT INTO `bjy_article` VALUES ('25', 'h后台发布的', '默认作者', '&lt;p&gt;&lt;img src=&quot;/boke/Upload/image/ueditor/20170604/1496585748649779.jpg&quot; title=&quot;白俊遥博客&quot; alt=&quot;白俊遥博客&quot;/&gt;&lt;/p&gt;', '', '', '1', '1', '0', '1', '1', '1496585757', '28');
+INSERT INTO `bjy_article` VALUES ('26', '大家一起学习日本语啊', 'god', '&lt;p&gt;二级语法&lt;img src=&quot;/boke/Upload/image/ueditor/20170604/1496586173508635.jpg&quot; title=&quot;白俊遥博客&quot; alt=&quot;白俊遥博客&quot;/&gt;&lt;/p&gt;', '', '二级语法', '1', '0', '0', '1', '1', '1496586176', '28');
+INSERT INTO `bjy_article` VALUES ('27', 'PHP技术优势', 'god', '&lt;p&gt;&lt;img src=&quot;/boke/Upload/image/ueditor/20170604/1496586237249584.jpg&quot; title=&quot;白俊遥博客&quot; alt=&quot;白俊遥博客&quot;/&gt;&lt;/p&gt;&lt;p&gt;我们来学PHP&lt;/p&gt;', '', '我们来学PHP', '1', '0', '0', '1', '0', '1496586249', '29');
 
 -- ----------------------------
 -- Table structure for `bjy_article_pic`
@@ -53,13 +52,14 @@ CREATE TABLE `bjy_article_pic` (
   `path` varchar(100) NOT NULL DEFAULT '' COMMENT '图片路径',
   `aid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '所属文章id',
   PRIMARY KEY (`ap_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of bjy_article_pic
 -- ----------------------------
-INSERT INTO `bjy_article_pic` VALUES ('15', '/Upload/image/ueditor/20170510/1494373976101331.jpg', '19');
-INSERT INTO `bjy_article_pic` VALUES ('16', '/Upload/image/ueditor/20170510/1494374017115505.jpg', '19');
+INSERT INTO `bjy_article_pic` VALUES ('22', '/Upload/image/ueditor/20170604/1496585748649779.jpg', '25');
+INSERT INTO `bjy_article_pic` VALUES ('23', '/Upload/image/ueditor/20170604/1496586173508635.jpg', '26');
+INSERT INTO `bjy_article_pic` VALUES ('24', '/Upload/image/ueditor/20170604/1496586237249584.jpg', '27');
 
 -- ----------------------------
 -- Table structure for `bjy_article_tag`
@@ -76,8 +76,14 @@ CREATE TABLE `bjy_article_tag` (
 INSERT INTO `bjy_article_tag` VALUES ('20', '22');
 INSERT INTO `bjy_article_tag` VALUES ('19', '21');
 INSERT INTO `bjy_article_tag` VALUES ('19', '22');
-INSERT INTO `bjy_article_tag` VALUES ('18', '21');
 INSERT INTO `bjy_article_tag` VALUES ('17', '20');
+INSERT INTO `bjy_article_tag` VALUES ('21', '20');
+INSERT INTO `bjy_article_tag` VALUES ('18', '20');
+INSERT INTO `bjy_article_tag` VALUES ('18', '21');
+INSERT INTO `bjy_article_tag` VALUES ('18', '22');
+INSERT INTO `bjy_article_tag` VALUES ('25', '20');
+INSERT INTO `bjy_article_tag` VALUES ('25', '21');
+INSERT INTO `bjy_article_tag` VALUES ('26', '22');
 
 -- ----------------------------
 -- Table structure for `bjy_attachment`
@@ -155,13 +161,16 @@ CREATE TABLE `bjy_comment` (
   `status` tinyint(1) unsigned NOT NULL COMMENT '1:已审核 0：未审核',
   `is_delete` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否删除',
   PRIMARY KEY (`cmtid`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of bjy_comment
 -- ----------------------------
 INSERT INTO `bjy_comment` VALUES ('19', '1', '1', '0', '17', '测试评论&lt;img src=&quot;/Public/emote/tuzki/t_0002.gif&quot; title=&quot;Love&quot; alt=&quot;白俊遥博客&quot;&gt;', '1445747059', '1', '0');
 INSERT INTO `bjy_comment` VALUES ('21', '1', '1', '19', '17', '测试回复', '1447943018', '1', '0');
+INSERT INTO `bjy_comment` VALUES ('22', '1', '1', '0', '19', 'gfsd', '1496580427', '1', '0');
+INSERT INTO `bjy_comment` VALUES ('23', '1', '1', '0', '21', '反对反对', '1496584351', '1', '0');
+INSERT INTO `bjy_comment` VALUES ('24', '1', '1', '0', '26', '大家来看', '1496586278', '1', '0');
 
 -- ----------------------------
 -- Table structure for `bjy_config`
@@ -183,19 +192,19 @@ INSERT INTO `bjy_config` VALUES ('3', 'WEB_DESCRIPTION', '技术博客');
 INSERT INTO `bjy_config` VALUES ('4', 'WEB_STATUS', '1');
 INSERT INTO `bjy_config` VALUES ('5', 'ADMIN_PASSWORD', '21232f297a57a5a743894a0e4a801fc3');
 INSERT INTO `bjy_config` VALUES ('6', 'WATER_TYPE', '1');
-INSERT INTO `bjy_config` VALUES ('7', 'TEXT_WATER_WORD', 'admin.com');
+INSERT INTO `bjy_config` VALUES ('7', 'TEXT_WATER_WORD', 'www.boke.com');
 INSERT INTO `bjy_config` VALUES ('8', 'TEXT_WATER_TTF_PTH', './Public/static/font/ariali.ttf');
-INSERT INTO `bjy_config` VALUES ('9', 'TEXT_WATER_FONT_SIZE', '15');
+INSERT INTO `bjy_config` VALUES ('9', 'TEXT_WATER_FONT_SIZE', '18');
 INSERT INTO `bjy_config` VALUES ('10', 'TEXT_WATER_COLOR', '#008CBA');
 INSERT INTO `bjy_config` VALUES ('11', 'TEXT_WATER_ANGLE', '0');
 INSERT INTO `bjy_config` VALUES ('12', 'TEXT_WATER_LOCATE', '9');
-INSERT INTO `bjy_config` VALUES ('13', 'IMAGE_WATER_PIC_PTAH', './Upload/image/logo/logo.png');
+INSERT INTO `bjy_config` VALUES ('13', 'IMAGE_WATER_PIC_PTAH', './Upload/image/logo/logo.jpg');
 INSERT INTO `bjy_config` VALUES ('14', 'IMAGE_WATER_LOCATE', '9');
 INSERT INTO `bjy_config` VALUES ('15', 'IMAGE_WATER_ALPHA', '60');
 INSERT INTO `bjy_config` VALUES ('16', 'WEB_CLOSE_WORD', '网站升级中，请稍后访问。');
 INSERT INTO `bjy_config` VALUES ('17', 'WEB_ICP_NUMBER', '豫ICP备0000001号-2');
 INSERT INTO `bjy_config` VALUES ('18', 'ADMIN_EMAIL', 'admin@admin.com');
-INSERT INTO `bjy_config` VALUES ('19', 'COPYRIGHT_WORD', '文章保留版权提示');
+INSERT INTO `bjy_config` VALUES ('19', 'COPYRIGHT_WORD', '文章版权提示可以修噶');
 INSERT INTO `bjy_config` VALUES ('20', 'QQ_APP_ID', '');
 INSERT INTO `bjy_config` VALUES ('21', 'CHANGYAN_APP_ID', 'cyrKRbJ5N');
 INSERT INTO `bjy_config` VALUES ('22', 'CHANGYAN_CONF', 'prod_c654661caf5ab6da98742d040413815b');
@@ -264,12 +273,16 @@ CREATE TABLE `bjy_oauth_user` (
   `status` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '状态',
   `email` varchar(255) NOT NULL DEFAULT '' COMMENT '邮箱',
   `is_admin` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否是admin',
+  `user_pass` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of bjy_oauth_user
 -- ----------------------------
+INSERT INTO `bjy_oauth_user` VALUES ('1', '1', '0', 'god', '', '', '', '0', '0', '', '0', '1', 'fas@1232.comhh', '0', '123456');
+INSERT INTO `bjy_oauth_user` VALUES ('2', '0', '0', 'asp昵称', '', '', '', '0', '0', '', '0', '1', '123@asp.comfff', '0', '123456');
+INSERT INTO `bjy_oauth_user` VALUES ('3', '0', '1', 'nick', '', '', '', '0', '0', '', '0', '1', 'fa', '0', '123');
 
 -- ----------------------------
 -- Table structure for `bjy_tag`

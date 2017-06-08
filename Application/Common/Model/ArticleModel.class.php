@@ -347,6 +347,35 @@ class ArticleModel extends BaseModel{
         return $data;
     }
 
+    // 传递搜索词获取数据
+    public function getDataByAuthor($username){
+        $map=array(
+            'author'=>array('like',"%$username%")
+        );
+      
+        $count=$this->where($map)->count();
+        $page=new \Org\Bjy\Page($count,10);
+        $list=$this
+        ->where($map)
+        ->order('addtime desc')
+        ->limit($page->firstRow.','.$page->listRows)
+        ->select();
+        foreach ($list as $k => $v) {
+            $list[$k]['pic_path']=D('ArticlePic')->getDataByAid($v['aid']);
+            $list[$k]['url']=U('Home/Index/article/',array('search_word'=>$search_word,'aid'=>$v['aid']));
+            $list[$k]['tids']=D('ArticleTag')->getDataByAid($v['aid']);
+            $list[$k]['tag']=D('ArticleTag')->getDataByAid($v['aid'],'all');
+            $list[$k]['category']=current(D('Category')->getDataByCid($v['cid'],'cid,cid,cname,keywords'));
+            $list[$k]['addtime']=word_time($v['addtime']);
+        }
+        $show=$page->show();
+        $data=array(
+            'page'=>$show,
+            'data'=>$list
+        );
+        return $data;
+    }
+    
     // 传递cid获得此分类下面的文章数据
     // is_all为true时获取全部数据 false时不获取is_show为0 和is_delete为1的数据
     public function getDataByCid($cid,$is_all=false){

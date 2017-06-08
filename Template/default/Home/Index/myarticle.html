@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<include file="Public/public_head" title="{$category['cname']}-" keywords="{$category['keywords']}" description="{$category['description']}"/>
+<link rel="canonical" href="{:U('Home/Index/category',array('cid'=>$_GET['cid']),'',true)}" />
+</head>
+<body>
+<include file="Public/public_nav"/>
+<div class="b-h-70"></div>
+<div id="b-content" class="container">
+	<div class="row">
+		
+<!-- gggg -->
+
+<div class="col-xs-12 col-md-12 col-lg-8">
+<table class="table table-bordered table-striped table-hover table-condensed">
+<thead>
+<tr>
+<th width="9%">所属栏目</th>
+<th width="20%">标题</th>
+<th width="8%">作者</th>
+<th width="5%">点击数</th>
+<th width="13%">发布时间</th>
+<th width="8%">操作</th></tr>
+</thead>
+<foreach name="data" item="v">
+<td>{$v['category']['cname']}</td>
+<td><a href="{:U('Home/Index/article',array('aid'=>$v['aid']),true,true)}" target="_blank">{$v['title']}</a></td>
+<td>{$v['author']}</td>
+<td>{$v['click']}</td><td>{$v['addtime']}</td>
+<td> <a href="{:U('Home/Index/myarticleupdate',array('aid'=>$v['aid']))}">修改</a> | 
+<a href="javascript:if(confirm('确定要删除吗?')) location='{:U('Home/Index/recycle',array('table_name'=>'Article','id_name'=>'aid','id_number'=>$v['aid']))}'">删除</a>
+</td></tr>
+</foreach>
+</table>
+<div style="text-align: center;"> {$page}</div>
+<div style="text-align: center;"> <a class="tstyle-1  btnAdd"   href="{:U('Home/Index/myarticleadd')}">发布文章</a></div>
+<bootstrapjs/>
+</div>
+<!-- gggg -->
+		<include file="Public/public_right"/>
+	</div>
+	<div class="row">
+		<include file="Public/public_foot"/>
+	</div>
+</div>
+<include file="Public/public_login"/>
+</body>
+</html>

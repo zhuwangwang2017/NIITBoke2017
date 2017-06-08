@@ -11,6 +11,26 @@ class UserController extends HomeBaseController {
         redirect($sdk->getRequestCodeURL());
     }
 
+    // 本系统的登录
+    public function user_login(){
+        $data=I('post.');
+    
+        $users=D('OauthUser')->checkLogin($data['nickname'],$data['user_pass']);
+      
+        
+        if(isset($users))
+        {
+           
+            session('user',$users);
+     
+           $this->success('登录成功',U('Home/Index/index'));
+        }
+        else{
+            $this->success('用户名或密码错误!',U('Home/Index/index'));
+        }
+    }
+    
+
     // 第三方平台退出
     public function logout(){
         session('user',null);

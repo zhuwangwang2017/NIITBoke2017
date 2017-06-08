@@ -30,14 +30,29 @@ class OauthUserModel extends BaseModel{
     }
 
     // 添加数据
+    /*
     public function addData($data){
         if($create=$this->create($data)){
             $id=$this->add($create);
             return $id;
         }
     }
+*/
 
+    // 添加数据
+    public function addData(){
+        $data=I('post.');
+        if($this->create($data)){
+ 
+            $lid=$this->add($data);
+            return $lid;
+        }else{
+            return false;
+        }
+    }
+    
     // 修改数据
+    /*
     public function editData($data){
         $openid=$data['openid'];
         if($create=$this->create($data)){
@@ -48,7 +63,22 @@ class OauthUserModel extends BaseModel{
             return $this->getFieldByOpenid($openid,'id');
         }
     }
+*/
 
+    // 修改数据
+    public function editData(){
+        $data=I('post.');
+        if($this->create($data)){
+            $create['login_times']=array('exp','login_times+1');
+            unset($create['status']);
+            unset($create['create_time']);
+            $this->where(array('id'=>$data['id']))->save($data);
+            return $this->getDataByid($data['id']);
+        }else{
+            return false;
+        }
+    }
+    
     // 传递openid获取单条数据
     public function getDataByOpenid($openid){
         return $this->where(array('openid'=>$openid))->find();
@@ -74,6 +104,16 @@ class OauthUserModel extends BaseModel{
 
     }
 
-
-
+    // 传递lid获取单条数据
+    public function getDataByid($id){
+        return $this->where(array('id'=>$id))->find();
+    }
+    // 传递openid获取单条数据
+    public function checkLogin($username,$userpass){
+        $where=array(
+            'nickname'=>$username,
+            'user_pass'=>$userpass
+        );
+        return $this->where($where)->find();
+    }
 }

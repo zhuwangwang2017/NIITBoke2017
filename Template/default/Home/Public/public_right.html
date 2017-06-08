@@ -29,7 +29,7 @@
 <div>
 <foreach name="new_comment" item="v">
 <ul class="b-new-comment <eq name="key" value="0">b-new-commit-first</eq>"> 
-<img class="b-head-img js-head-img" src="__HOME_IMAGE__/qq_default.jpg" _src="{$v['head_img']}" alt="{$v['nickname']}">
+<img class="b-head-img js-head-img" src="__HOME_IMAGE__/qq_default.jpg" _src22="{$v['head_img']}" alt="{$v['nickname']}">
 <li class="b-nickname"> {$v['nickname']}<span>{$v['date']}</span></li>
 <li class="b-nc-article"> 在<a href="{:U('Home/Index/article',array('aid'=>$v['aid']))}" target="_blank">{$v['title']}</a>中评论</li>
 <li class="b-content"> {$v['content']}</li>

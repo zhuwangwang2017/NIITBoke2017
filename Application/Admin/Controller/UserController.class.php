@@ -32,5 +32,33 @@ class UserController extends AdminBaseController{
         }
     }
 
-
+    // 添加用户
+    public function add(){
+        if(IS_POST){
+   
+            if(D('OauthUser')->addData()){
+                $this->success('用户添加成功',U('Admin/User/index'));
+            }else{
+                $this->error(D('OauthUser')->getError());
+            }
+        }
+        else{
+            $this->display();
+        }
+    }
+    // 修改友情链接
+    public function edit(){
+        if(IS_POST){
+            if(D('OauthUser')->editData()){
+                $this->success('修改成功');
+            }else{
+                $this->error(D('OauthUser')->getError());
+            }
+        }else{
+            $lid=I('get.id');
+            $data=D('OauthUser')->getDataByid($lid);
+            $this->assign('data',$data);
+            $this->display();
+        }
+    }
 }

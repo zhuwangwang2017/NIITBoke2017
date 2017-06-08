@@ -17,12 +17,7 @@ class IndexController extends HomeBaseController {
         $this->assign($assign);
         $this->display();
     }
-    // 首页
-    public function reg(){
-      
-        $this->display();
-    }
-    
+ 
 
     // 分类
     public function category(){
@@ -168,6 +163,91 @@ class IndexController extends HomeBaseController {
     }
 
 
-
+    
+    
+    // 文章内容
+    public function myarticle(){
+     
+       $user= session('user');
+     
+         $data=D('Article')->getDataByAuthor($user['nickname']);
+        $this->assign('data',$data['data']);
+        $this->assign('page',$data['page']);
+        $this->display();
+        
+    }
+    // 修改文章
+    public function myarticleupdate(){
+        if(IS_POST){
+            if(D('Article')->editData()){
+                $this->success('修改成功');
+            }
+            else
+            {
+                $this->error('修改失败');
+            }
+        }else{
+            $aid=I('aid');
+            $data=D('Article')->getDataByAid($aid);
+            $allCategory=D('Category')->getAllData();
+            $allTag=D('Tag')->getAllData();
+            $this->assign('allCategory',$allCategory);
+            $this->assign('allTag',$allTag);
+            $this->assign('data',$data);
+            $this->display();
+        }
+    }
+    
+    
+    // 添加文章
+  
+    public function myarticleadd(){
+        if(IS_POST)
+        {
+            if($aid=D('Article')->addData())
+            {
+                $baidu_site_url=C('BAIDU_SITE_URL');
+                if(!empty($baidu_site_url))
+                {
+                    //$this->baidu_site($aid);
+                }
+                $this->success('文章添加成功',U('Home/Index/myarticle'));
+            }else{
+                $this->error(D('Article')->getError());
+            }
+        }else{
+            $allCategory=D('Category')->getAllData();
+            if(empty($allCategory)){
+                $this->error('请先添加分类');
+            }
+            $allTag=D('Tag')->getAllData();
+            $this->assign('allCategory',$allCategory);
+            $this->assign('allTag',$allTag);
+            $this->display();
+        }
+    
+    }
+   
+    
+    // 根据$_GET数组放入回收站
+    public function recycle(){
+        $data=I('get.');
+        M($data['table_name'])->where(array($data['id_name']=>$data['id_number']))->setField('is_delete',1);
+        $this->success('放入回收站成功');
+    }
+    // 添加用户
+    public function reg(){
+        if(IS_POST){
+             
+            if(D('OauthUser')->addData()){
+                $this->success('用户添加成功',U('Home/Index/index'));
+            }else{
+                $this->error(D('OauthUser')->getError());
+            }
+        }
+        else{
+            $this->display();
+        }
+    }
 
 }

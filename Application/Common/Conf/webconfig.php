@@ -12,18 +12,18 @@ return array(
     'WEB_KEYWORDS'              =>  '技术博客,个人博客',         //网站关键字
     'WEB_DESCRIPTION'           =>  '技术博客',      //网站描述
     'AUTHOR'                    =>  '默认作者',               //默认作者
-    'COPYRIGHT_WORD'            =>  '文章保留版权提示',       //文章保留版权提示
+    'COPYRIGHT_WORD'            =>  '文章版权提示可以修噶',       //文章保留版权提示
     'IMAGE_TITLE_ALT_WORD'      =>  '博客', //图片默认title和alt
 
 //*************************************水印设置****************************************
     'WATER_TYPE'                =>  '1',           //水印类型 0:不使用水印 1:文字水印 2:图片水印 3:文字和图片水印同时使用
-    'TEXT_WATER_WORD'           =>  'admin.com',      //文字水印内容
+    'TEXT_WATER_WORD'           =>  'www.boke.com',      //文字水印内容
     'TEXT_WATER_TTF_PTH'        =>  './Public/static/font/ariali.ttf',   //文字水印字体路径
-    'TEXT_WATER_FONT_SIZE'      =>  '15', //文字水印文字字号
+    'TEXT_WATER_FONT_SIZE'      =>  '18', //文字水印文字字号
     'TEXT_WATER_COLOR'          =>  '#008CBA',     //文字水印文字颜色
     'TEXT_WATER_ANGLE'          =>  '0',     //文字水印文字倾斜程度
     'TEXT_WATER_LOCATE'         =>  '9',    //文字水印位置 1：上左 2：上中 3：上右 4：中左 5：中中 6：中右 7：下左 8：下中 9：下右
-    'IMAGE_WATER_PIC_PTAH'      =>  './Upload/image/logo/logo.png', //图片水印 水印路径
+    'IMAGE_WATER_PIC_PTAH'      =>  './Upload/image/logo/logo.jpg', //图片水印 水印路径
     'IMAGE_WATER_LOCATE'        =>  '9',   //图片水印 水印位置 1：上左 2：上中 3：上右 4：中左 5：中中 6：中右 7：下左 8：下中 9：下右
     'IMAGE_WATER_ALPHA'         =>  '60',    //图片水印 水印透明度：0-100
 
